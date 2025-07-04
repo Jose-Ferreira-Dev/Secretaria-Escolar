@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${professor.id} ? 'Editar Professor' : 'Novo Professor'"></title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar('professores')}"></div>
+    
+    <div class="container mt-4">
+        <h2 th:text="${professor.id} ? 'Editar Professor' : 'Novo Professor'"></h2>
+        
+        <form th:action="@{/admin/professores/salvar}" th:object="${professor}" method="post">
+            <input type="hidden" th:field="*{id}">
+            
+            <div class="mb-3">
+                <label class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" th:field="*{nomeProfessor}" required>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">CPF</label>
+                    <input type="text" class="form-control" th:field="*{cpfProfessor}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">RG</label>
+                    <input type="text" class="form-control" th:field="*{rgProfessor}" required>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Telefone</label>
+                <input type="text" class="form-control" th:field="*{numeroTelefone}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" th:field="*{emailProfessor}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Endereço</label>
+                <textarea class="form-control" th:field="*{enderecoProfessor}" rows="3" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a th:href="@{/admin/professores}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+    
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

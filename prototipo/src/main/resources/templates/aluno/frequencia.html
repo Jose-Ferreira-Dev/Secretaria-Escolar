@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Frequência</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar('frequencia')}"></div>
+    
+    <div class="container mt-4">
+        <h2 class="mb-4">Minha Frequência</h2>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total de Aulas</h5>
+                        <p class="card-text display-6" th:text="${totalAulas}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Presenças</h5>
+                        <p class="card-text display-6" th:text="${presencas}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-danger">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Faltas</h5>
+                        <p class="card-text display-6" th:text="${faltas}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-calendar-check"></i> Frequência por Disciplina
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Presenças</th>
+                                <th>Faltas</th>
+                                <th>Frequência</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="freq : ${frequencias}">
+                                <td th:text="${freq.disciplina}"></td>
+                                <td th:text="${freq.presencas}"></td>
+                                <td th:text="${freq.faltas}"></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" 
+                                             th:classappend="${freq.percentual >= 75} ? 'bg-success' : 'bg-warning'"
+                                             th:style="'width:' + ${freq.percentual} + '%'" 
+                                             th:text="${freq.percentual} + '%'"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span th:if="${freq.percentual >= 75}" class="badge bg-success">Regular</span>
+                                    <span th:if="${freq.percentual < 75}" class="badge bg-danger">Atenção</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card shadow mt-4">
+            <div class="card-header bg-info text-white">
+                <i class="bi bi-calendar-event"></i> Últimas Ocorrências
+            </div>
+            <div class="card-body">
+                <div class="timeline">
+                    <div th:each="ocorrencia : ${ocorrencias}" class="timeline-item">
+                        <div class="timeline-badge" 
+                             th:classappend="${ocorrencia.tipo == 'PRESENCA'} ? 'bg-success' : 'bg-danger'">
+                            <i th:classappend="${ocorrencia.tipo == 'PRESENCA'} ? 'bi bi-check' : 'bi bi-x'"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h5 class="timeline-title" th:text="${ocorrencia.disciplina}"></h5>
+                                <p class="text-muted">
+                                    <small th:text="${#temporals.format(ocorrencia.data, 'dd/MM/yyyy')}"></small>
+                                </p>
+                            </div>
+                            <div class="timeline-body">
+                                <p th:text="${ocorrencia.tipo == 'PRESENCA'} ? 'Presença registrada' : 'Falta registrada'"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    
+    <style>
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-badge {
+            position: absolute;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .timeline-panel {
+            margin-left: 45px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            position: relative;
+        }
+    </style>
+    
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

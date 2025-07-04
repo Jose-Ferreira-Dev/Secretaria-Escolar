@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Professores</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/dataTables.bootstrap5.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar('professores')}"></div>
+    
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Lista de Professores</h2>
+            <a th:href="@{/admin/professores/novo}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Novo Professor
+            </a>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="professoresTable" class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="professor : ${professores}">
+                                <td th:text="${professor.id}"></td>
+                                <td th:text="${professor.nomeProfessor}"></td>
+                                <td th:text="${professor.cpfProfessor}"></td>
+                                <td th:text="${professor.emailProfessor}"></td>
+                                <td th:text="${professor.numeroTelefone}"></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a th:href="@{/admin/professores/editar/{id}(id=${professor.id})}" 
+                                           class="btn btn-sm btn-warning">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a th:href="@{/admin/professores/excluir/{id}(id=${professor.id})}" 
+                                           class="btn btn-sm btn-danger"
+                                           onclick="return confirm('Tem certeza que deseja excluir este professor?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                        <a th:href="@{/admin/professores/disciplinas/{id}(id=${professor.id})}" 
+                                           class="btn btn-sm btn-info">
+                                            <i class="bi bi-book"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    
+    <!-- Scripts -->
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/dataTables.min.js}"></script>
+    <script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#professoresTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json'
+                },
+                columnDefs: [
+                    { orderable: false, targets: 5 }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

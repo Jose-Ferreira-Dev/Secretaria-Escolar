@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aluno Dashboard</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    
+    <div class="container mt-4">
+        <h2>Bem-vindo, <span th:text="${aluno.nomeAluno}"></span></h2>
+        
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-journal-text fs-1"></i>
+                        <h5 class="card-title mt-2">Notas</h5>
+                        <a th:href="@{/aluno/notas}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar-check fs-1"></i>
+                        <h5 class="card-title mt-2">Frequência</h5>
+                        <a th:href="@{/aluno/frequencia}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-body text-center">
+                        <i class="bi bi-clock fs-1"></i>
+                        <h5 class="card-title mt-2">Horários</h5>
+                        <a th:href="@{/aluno/horarios}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                Meus Cursos
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Matrícula</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="matricula : ${matriculas}">
+                            <td th:text="${matricula.curso.nomeCurso}"></td>
+                            <td th:text="${#temporals.format(matricula.dataMatricula, 'dd/MM/yyyy')}"></td>
+                            <td>
+                                <span th:text="${matricula.situacaoCurso}" 
+                                      th:class="${matricula.situacaoCurso == 'Ativo'} ? 'badge bg-success' : 'badge bg-secondary'"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
