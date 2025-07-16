@@ -1,4 +1,4 @@
-package com.sge.model;
+package com.SGE.model;
 
 import jakarta.persistence.*;
 
@@ -18,6 +18,10 @@ public class SalaTurma {
     @ManyToOne
     @JoinColumn(name = "turma_id", nullable = false)
     private Turma turma;
+    
+     private String diaSemana;
+    private String horaInicio;
+    private String horaFim;
     
     // Getters e Setters
     public Long getId() {
@@ -42,5 +46,21 @@ public class SalaTurma {
     
     public void setTurma(Turma turma) {
         this.turma = turma;
+    }
+
+    public String getDiaSemana() {
+return diaSemana;
+    }
+    
+public void setDiaSemana(String DiaSemana) {
+        this.diaSemana = diaSemana;
+    }
+    
+    public String getHoraInicio() {
+return horaInicio;
+    }
+
+    public String getHoraFim() {
+return horaFim;
     }
 }

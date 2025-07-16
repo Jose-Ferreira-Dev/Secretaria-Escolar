@@ -1,4 +1,4 @@
-package com.sge.config;
+package com.SGE.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

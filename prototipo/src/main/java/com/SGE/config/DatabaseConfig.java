@@ -1,4 +1,4 @@
-package com.sge.config;
+package com.SGE.config;
 
 import javax.sql.DataSource;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -16,9 +16,9 @@ public class DatabaseConfig {
     public DataSource dataSource() {
         return DataSourceBuilder.create()
             .driverClassName("com.mysql.cj.jdbc.Driver")
-            .url("jdbc:mysql://localhost:3306/dados_secretaria")
-            .username("seu_usuario")
-            .password("sua_senha")
+            .url("jdbc:mysql://localhost:1001/dados_secretaria")
+            .username("Jose")
+            .password("Qw3$E7tY*9#f")
             .build();
     }
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: base(~{::body})">
+<body>
+    <h2>Seus Dados</h2>
+    <p>Nome: <span th:text="${aluno.nomeAluno}"></span></p>
+    <p>CPF: <span th:text="${aluno.cpfAluno}"></span></p>
+    <p>RG: <span th:text="${aluno.rgAluno}"></span></p>
+    <p>Data de Nascimento: <span th:text="${aluno.dataNascimento}"></span></p>
+    <p>Endereço: <span th:text="${aluno.enderecoAluno}"></span></p>
+    <p>Telefone do Responsável: <span th:text="${aluno.numeroResponsavel}"></span></p>
+
+    <a th:href="@{'/aluno/editar/' + ${aluno.id}}">Editar meus dados</a>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.sge.security.exceptions;
+package com.SGE.security.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,8 +1,8 @@
-package com.sge.security.auth;
+package com.SGE.security.auth;
 
-import com.sge.model.Administracao;
-import com.sge.model.Aluno;
-import com.sge.model.Professor;
+import com.SGE.model.Administracao;
+import com.SGE.model.Aluno;
+import com.SGE.model.Professor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

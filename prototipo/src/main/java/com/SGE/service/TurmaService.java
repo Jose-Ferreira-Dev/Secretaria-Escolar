@@ -1,6 +1,6 @@
-package com.sge.service;
+package com.SGE.service;
 
-import com.sge.model.Turma;
+import com.SGE.model.Turma;
 import com.SGE.repository.TurmaRepository;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +34,14 @@ public class TurmaService {
     public Turma buscarPorCodigo(String codigo) {
         return turmaRepository.findByCodigoTurma(codigo).orElse(null);
     }
+    
+    public List<Turma> listarPorProfessor(Long professorId) {
+    return turmaRepository.findByProfessorId(professorId); // ou equivalente via JPQL
+}
+    
+    public List<Turma> listarPorAluno(Long alunoId) {
+    return turmaRepository.findByAlunoId(alunoId); // via JPQL ou native query
+}
     
     public List<Turma> buscarPorDisciplina(Long disciplinaId) {
         return turmaRepository.findByDisciplinaId(disciplinaId);

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: base(~{::body})">
+<head>
+    <title>Meus Dados</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Meus Dados</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Nome:</strong> <span th:text="${professor.nomeProfessor}"></span></p>
+                        <p><strong>CPF:</strong> <span th:text="${professor.cpfProfessor}"></span></p>
+                        <p><strong>RG:</strong> <span th:text="${professor.rgProfessor}"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Email:</strong> <span th:text="${professor.emailProfessor}"></span></p>
+                        <p><strong>Telefone:</strong> <span th:text="${professor.numeroTelefone}"></span></p>
+                        <p><strong>Endereço:</strong> <span th:text="${professor.enderecoProfessor}"></span></p>
+                    </div>
+                </div>
+                <a th:href="@{/professor/editar-dados}" class="btn btn-primary mt-3">Editar Dados</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
-package com.sge.service;
+package com.SGE.service;
 
-import com.sge.model.Professor;
-import com.sge.repository.ProfessorRepository;
+import com.SGE.model.Professor;
+import com.SGE.repository.ProfessorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class ProfessorService {
         return professorRepository.save(professor);
     }
     
-    public Professor obterPorId(Long id) {
+    public Professor buscarPorId(Long id) {
         return professorRepository.findById(id).orElse(null);
     }
     

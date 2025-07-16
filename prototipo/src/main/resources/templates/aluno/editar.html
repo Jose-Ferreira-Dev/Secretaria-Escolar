@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: base(~{::body})">
+<body>
+    <h2>Editar Seus Dados</h2>
+
+    <form method="post" th:action="@{/aluno/salvar}" th:object="${aluno}">
+        <input type="hidden" th:field="*{id}" />
+        <label>Nome: <input type="text" th:field="*{nomeAluno}" /></label><br>
+        <label>CPF: <input type="text" th:field="*{cpfAluno}" readonly /></label><br>
+        <label>RG: <input type="text" th:field="*{rgAluno}" /></label><br>
+        <label>Data de Nascimento: <input type="date" th:field="*{dataNascimento}" /></label><br>
+        <label>Telefone do Responsável: <input type="text" th:field="*{numeroResponsavel}" /></label><br>
+        <label>Endereço: <input type="text" th:field="*{enderecoAluno}" /></label><br>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

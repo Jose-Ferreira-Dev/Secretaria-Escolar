@@ -1,8 +1,8 @@
-package com.sge.security.filters;
+package com.SGE.security.filters;
 
-import com.sge.security.auth.CustomUserDetails;
-import com.sge.security.auth.CustomUserDetailsService;
-import com.sge.security.auth.LoginAttemptService;
+import com.SGE.security.auth.CustomUserDetails;
+import com.SGE.service.CustomUserDetailsService;
+import com.SGE.security.auth.LoginAttemptService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.FilterChain;

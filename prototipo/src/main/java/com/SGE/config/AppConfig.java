@@ -1,4 +1,4 @@
-package com.sge.config;
+package com.SGE.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

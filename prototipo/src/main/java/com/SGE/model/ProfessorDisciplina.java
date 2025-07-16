@@ -1,4 +1,4 @@
-package com.sge.model;
+package com.SGE.model;
 
 import jakarta.persistence.*;
 

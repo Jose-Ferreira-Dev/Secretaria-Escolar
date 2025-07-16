@@ -1,4 +1,4 @@
-package com.sge.security.auth;
+package com.SGE.security.auth;
 
 import org.springframework.stereotype.Service;
 

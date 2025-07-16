@@ -1,6 +1,7 @@
-package com.sge.model;
+package com.SGE.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "aluno_prontuario")
@@ -21,6 +22,9 @@ public class AlunoProntuario {
     
     @Column(name = "situacao_curso")
     private String situacaoCurso;
+    
+    @Column(name = "data_matricula")
+    private LocalDateTime dataMatricula;
     
     // Getters e Setters
     public Long getId() {
@@ -53,5 +57,13 @@ public class AlunoProntuario {
     
     public void setSituacaoCurso(String situacaoCurso) {
         this.situacaoCurso = situacaoCurso;
+    }
+    
+    public LocalDateTime getDataMatricula() {
+        return dataMatricula;
+    }
+    
+    public void setDataMatricula(LocalDateTime dataMatricula) {
+        this.dataMatricula = dataMatricula;
     }
 }

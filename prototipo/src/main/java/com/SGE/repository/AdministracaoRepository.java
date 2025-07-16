@@ -1,8 +1,10 @@
-package com.sge.repository;
+package com.SGE.repository;
 
-import com.sge.model.Administracao;
+import com.SGE.model.Administracao;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AdministracaoRepository extends JpaRepository<Administracao, Long> {
-    Administracao findByUsername(String username);
+  
+    public Administracao findByUsername(String username);
+    public boolean existsByUsername(String username);
 }

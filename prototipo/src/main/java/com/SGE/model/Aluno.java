@@ -1,4 +1,4 @@
-package com.sge.model;
+package com.SGE.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,7 +20,7 @@ public class Aluno {
     private String nomeAluno;
     private String rgAluno;
     private String cpfAluno;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private String numeroResponsavel;
     private String enderecoAluno;
     
@@ -72,11 +72,11 @@ public class Aluno {
         this.cpfAluno = cpfAluno;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -161,9 +161,5 @@ public class Aluno {
     @Override
     public int hashCode() {
         return id.hashCode();
-    }
-
-    public Aluno orElse(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

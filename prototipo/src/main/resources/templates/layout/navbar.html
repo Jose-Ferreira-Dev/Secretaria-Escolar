@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="/dashboard">Início</a></li>
+
+        <!-- ADMIN -->
+        <li th:if="${session.tipoUsuario == 'admin'}"><a href="/admin/listar">Listar usuários</a></li>
+        <li th:if="${session.tipoUsuario == 'admin'}"><a href="/admin/adicionar">Adicionar usuário</a></li>
+
+        <!-- PROFESSOR -->
+        <li th:if="${session.tipoUsuario == 'professor'}"><a href="/professor/listar">Listar alunos</a></li>
+        <li th:if="${session.tipoUsuario == 'professor'}"><a href="/professor/adicionar">Adicionar aluno</a></li>
+
+        <!-- TODOS -->
+        <li><a href="/dados">Meus dados</a></li>
+        <li><a href="/logout">Sair</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.sge.model;
+package com.SGE.model;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -20,6 +20,10 @@ public class ProntuarioAluno {
     @Column(name = "observacoes", nullable = false, length = 255)
     private String observacoes;
     
+    @OneToOne
+    @JoinColumn(name = "aluno_id", referencedColumnName = "id")
+    private Aluno aluno;
+    
     @OneToMany(mappedBy = "prontuario")
     private List<AlunoProntuario> alunosProntuarios;
     
@@ -27,10 +31,11 @@ public class ProntuarioAluno {
     public ProntuarioAluno() {
     }
     
-    public ProntuarioAluno(String notasAluno, String frequenciaAluno, String observacoes) {
+    public ProntuarioAluno(String notasAluno, String frequenciaAluno, String observacoes, Aluno aluno) {
         this.notasAluno = notasAluno;
         this.frequenciaAluno = frequenciaAluno;
         this.observacoes = observacoes;
+        this.aluno = aluno;
     }
     
     // Getters e Setters
@@ -66,6 +71,14 @@ public class ProntuarioAluno {
         this.observacoes = observacoes;
     }
     
+    public Aluno getAluno() {
+        return aluno;
+    }
+    
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+    
     public List<AlunoProntuario> getAlunosProntuarios() {
         return alunosProntuarios;
     }
@@ -81,6 +94,7 @@ public class ProntuarioAluno {
                 ", notasAluno='" + notasAluno + '\'' +
                 ", frequenciaAluno='" + frequenciaAluno + '\'' +
                 ", observacoes='" + observacoes + '\'' +
+                ", aluno=" + (aluno != null ? aluno.getNomeAluno() : "null") +
                 '}';
     }
 }
